@@ -49,13 +49,9 @@ namespace StackExercise
             if (_list.Count == 0)
                 throw new InvalidOperationException("No element in the stack yet");
             object ToReturn = _list[0];
+            object ToReturn = _list[_list.Count - 1];
 
-            int elements = _list.Count;
-            for (int i = 0; i < elements - 1; i++)
-            {
-                _list[i] = (int)_list[i + 1];
-            }
-            _list.Remove(elements - 1);
+             _list.Remove(_list.Count - 1);
 
             return (ToReturn);
         }
