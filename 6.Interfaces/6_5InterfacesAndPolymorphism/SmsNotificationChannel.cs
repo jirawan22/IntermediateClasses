@@ -1,12 +1,7 @@
-﻿using System;
-
-namespace InterfacePolymor
+﻿namespace InterfacePolymor
 {
     public class SmsNotificationChannel
     {
-        public void Send(Message message)
-        {
-            Console.WriteLine("Sending SMS...");
-        }
+
     }
 }
