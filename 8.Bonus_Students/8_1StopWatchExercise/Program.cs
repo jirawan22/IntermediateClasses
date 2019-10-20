@@ -12,49 +12,35 @@ namespace StopWatch
         {
             var stopwatch = new Stopwatch();
 
-            for (int i = 0; i < 2; i++)
-            {
-                stopwatch.start(DateTime.Today.AddDays(1));
+            Thread.Sleep(1000);
 
-                for (int j = 0; j < 1000; j++)
-                {
-                    Thread.Sleep(1);
-                }
-                stopwatch.stop(DateTime.Today.AddYears(-1));
-                Console.WriteLine(stopwatch.GetInterval().ToString());
-                Console.ReadLine();
-            }
+            stopwatch.stop();
+
+            Console.WriteLine("Duration : " + stopwatch.GetInterval().ToString());
+
+            Console.WriteLine("Press Enter to run the stopwatch one more time");
+            Console.ReadLine();
         }
     }
-
     public class Stopwatch
     {
         private DateTime _startTime;
         private DateTime _endTime;
-
-        private bool running = false;
         private bool _running;
-
         public void start()
         {
- 
-                if (_running)
-                    throw new InvalidOperationException("Stopwatch is already running");
-
+            if (_running)
+                throw new InvalidOperationException("Stopwatch is already running");
             _startTime = DateTime.Now;
             _running = true;
-
         }
         public void stop()
         {
             if (!_running)
                 throw new InvalidOperationException("Stopwatch is not running");
-
             _endTime = DateTime.Now;
             _running = false;
-
         }
-
         public TimeSpan GetInterval()
         {
             return _endTime - _startTime;
